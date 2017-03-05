@@ -56,36 +56,42 @@ public class MyVector<E> extends Vector<E> {
 
             // TEST CODE
             System.out.println(student);
-
-
         }
         // TEST CODE
         // Enter String "name" for name comparisons, String "SU" for SU comparisons
-        phoneBook.sort(phoneBook, "name");
+        //phoneBook.sort(phoneBook, "name");
+        phoneBook.sort("name");
 
     }
 
+    // Constructor for MyVector; calls on the "super()" method to inherit fields and methods from the Vector class
     public MyVector(){
         super();
 
     }
 
     // Method to compare students based on some sort type and swap their positions in the Vector as necessary
-    public void sort(MyVector<Student> students, String sortType){
+    public void sort(String sortType){
         Student student1;
         Student student2;
+
+        // A class that implements the Comparator class and handles how the students are to be sorted
         ComparatorMaster comparator = new ComparatorMaster(sortType);
 
-        for (int j = students.size()-1; j>0; j++){
+        // Initalize the swap condition to be false
+        for (int j = phoneBook.size()-1; j>0; j++){
             boolean swapped = false;
+            // TEST CODE
+            System.out.println(j);
 
-            for (int i = 1; i < students.size(); i++){
-                student1 = students.get(i-1);
-                student2 = students.get(i);
+            //
+            for (int i = 1; i < phoneBook.size(); i++){
+                student1 = phoneBook.get(i-1);
+                student2 = phoneBook.get(i);
                 int result = comparator.compare(student1,student2);
 
-                if(result >0){
-                    swap(students, i-1,i);
+                if(result > 0){
+                    swap(i-1, i);
                     swapped=true;
                 }
             }
@@ -95,14 +101,16 @@ public class MyVector<E> extends Vector<E> {
     }
 
     // Helper method to sort students after they've been compared by some criteria
-    public static void swap(MyVector<Student> student, int i, int j){
-        Student temp = student.get(i);
-        student.set(i,student.elementAt(j));
-        student.set(j,temp);
+    public static void swap(int i, int j){
+        Student temp = phoneBook.get(i);
+        phoneBook.set(i, phoneBook.elementAt(j));
+        phoneBook.set(j,temp);
 
         // TEST CODE
-        System.out.println("\nSwapped " + student.get(i) + student.get(j));
+        System.out.println("\nSwapped " + phoneBook.get(i) + " " + phoneBook.get(j));
     }
+
+    //public static void printSortedList
 
 
 }
