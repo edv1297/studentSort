@@ -3,9 +3,11 @@ import structure5.*;
 import java.util.Scanner;
 
 public class MyVector<E> extends Vector<E> {
-    protected Vector<Student> phoneBook;
+    protected static MyVector <Student> phoneBook;
 
     public static void main(String args[]){
+
+        phoneBook = new MyVector<Student>();
 
         Scanner sc = new Scanner(System.in);
         StringBuilder textBuffer = new StringBuilder();
@@ -41,7 +43,7 @@ public class MyVector<E> extends Vector<E> {
             textBuffer.append(linebreak);
 
             Student student = new Student(name, address, schoolPhone, suNum, homePhone);
-
+            phoneBook.add(student);
             System.out.println(student);
         }
     }
@@ -50,11 +52,10 @@ public class MyVector<E> extends Vector<E> {
         super();
     }
 
-    public void add(Student s){
-        phoneBook.add(s);
-    }
     public void sort(Comparator<E> c){
 
+
     }
+
 
 }
