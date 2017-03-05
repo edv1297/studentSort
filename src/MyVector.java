@@ -16,61 +16,62 @@ public class MyVector<E> extends Vector<E> {
     public static void main(String args[]){
 
         phoneBook = new MyVector<Student>();
-
         Scanner sc = new Scanner(System.in);
         StringBuilder textBuffer = new StringBuilder();
 
         while (sc.hasNextLine()){
-            String linebreak = "\n";
 
             String name = sc.nextLine();
             textBuffer.append(name);
-            textBuffer.append(linebreak);
+            textBuffer.append("\n");
 
             String address = sc.nextLine();
             textBuffer.append(address);
-            textBuffer.append(linebreak);
+            textBuffer.append("\n");
 
             long schoolPhone = sc.nextLong();
             textBuffer.append(schoolPhone);
-            textBuffer.append(linebreak);
+            textBuffer.append("\n");
 
             int suNum = sc.nextInt();
             textBuffer.append(suNum);
-            textBuffer.append(linebreak);
+            textBuffer.append("\n");
 
             long homePhone = sc.nextLong();
             textBuffer.append(homePhone);
-            textBuffer.append(linebreak);
+            textBuffer.append("\n");
 
             textBuffer.append(sc.nextLine());
-            textBuffer.append(linebreak);
+            textBuffer.append("\n");
 
             String breakLine = sc.nextLine();
             textBuffer.append(breakLine);
-            textBuffer.append(linebreak);
+            textBuffer.append("\n");
 
             Student student = new Student(name, address, schoolPhone, suNum, homePhone);
             phoneBook.add(student);
 
         }
         // TEST CODE
-        // Enter String "A" for name, "B" for SU
-
-
-        phoneBook.printSortedList();
-        System.out.println("\n\nSorted\n\n");
-
-
-        phoneBook.printSortedList();
-        phoneBook.giveAnswer("B");
+        // Enter String "A" for name, "B" for SU, "C" for vowels
+        System.out.println("Sorted\n");
+        phoneBook.giveAnswer("C");
 
     }
 
     // Constructor for MyVector; calls on the "super()" method to inherit fields and methods from the Vector class
     public MyVector(){
         super();
+    }
 
+    // Method to give answers to questions on lab handout: answers to questions A, B, C, and D
+    public static void giveAnswer(String question){
+        phoneBook.sort(question);
+        phoneBook.printSortedList();
+        Student first = phoneBook.firstElement();
+        Student last = phoneBook.lastElement();
+        System.out.print("First " + first + "\n");
+        System.out.print("Last " + last + "\n");
     }
 
     // Method to compare students based on some sort type and swap their positions in the Vector as necessary
@@ -115,19 +116,5 @@ public class MyVector<E> extends Vector<E> {
             Student s = phoneBook.get(i);
             System.out.println(s);
         }
-    }
-
-    // Method to give answers to questions on lab handout: answers to questions A, B, C, and D
-    public static void giveAnswer(String question){
-
-        phoneBook.sort(question);
-        Student first = phoneBook.firstElement();
-        Student last = phoneBook.lastElement();
-        System.out.print("first " + first + "\n");
-        System.out.print("last " + last + "\n");
-
-
-        // Print the names of the first and last person in alphabetical order
-
     }
 }

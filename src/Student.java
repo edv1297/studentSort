@@ -14,16 +14,16 @@ public class Student{
     protected long aPhone;
     protected int aSuBox;
     protected long aHomePhone;
+    private int vowelCount;
 
     public Student(String name, String address, long schoolPhone, int suBox, long homePhone){
-
         aName = name;
         anAddress = address;
         aPhone = schoolPhone;
         aSuBox = suBox;
         aHomePhone = homePhone;
-
     }
+
     public String getName(){
         return aName;
     }
@@ -43,18 +43,39 @@ public class Student{
     public long getHomePhone(){
         return aHomePhone;
     }
+
+    public int getVowels(){
+        Character[] vowels = {'a','e','i','o','u'};
+        String lowercaseName = aName.toLowerCase();
+
+        int count = 0;
+
+        for (int i = 0; i < vowels.length-1; i++){
+            for (int j = 0; j < lowercaseName.length(); j++){
+                if (lowercaseName.charAt(j) == vowels[i]){
+                    count++;
+                }
+            }
+        }
+            vowelCount = count;
+            return count;
+    }
+
     public String toString(){
 
-        // NAME AND SU TEST
-        //return "Name: " + this.getName() + "\nSU Box: " +
-        return "" + this.getSuBox();
+        // NAME TEST
+        //return "Name: " + this.getName();
+
+        // SU TEST
+        //return "SU Box: " + this.getSuBox();
+
+        // VOWEL TEST
+        //return "Name: " + this.getName() + vowelCount;
+        return "" + vowelCount;
 
         // + "\nAddress: " + this.getAddress() + "\nSchool phone: " + this.getSchoolPhone() +
 
 
          //+ "\nHome phone: " + this.getHomePhone()+ ". \n";
-
-
-
     }
 }

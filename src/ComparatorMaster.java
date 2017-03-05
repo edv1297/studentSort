@@ -6,16 +6,16 @@ public class ComparatorMaster implements Comparator<Student>{
 
     String comparison;
 
-    // The compareType passed through the constructor determines what we compare the students by.
+    // The String passed through the constructor determines what we compare the students by.
     public ComparatorMaster(String compareType){
-
         comparison = compareType;
-
     }
 
-    //if a<b return -1
-    //if a=b return 0
-    //if a>b return 1
+    /*
+    If a<b: return -1
+    If a=b: return 0
+    If a>b: return 1 
+    */
     public int compare(Student a, Student b){
 
         // Alphabetical comparison by name
@@ -27,13 +27,20 @@ public class ComparatorMaster implements Comparator<Student>{
 
         // Numerical comparison by SU Box number
         } else if (comparison.equals("B")){
-
             int num1 = a.getSuBox();
             int num2 = b.getSuBox();
 
             return num1-num2;
+
+        // Numerical comparison by number of vowels in name
+        } else if (comparison.equals("C")){
+            int vowel1 = a.getVowels();
+            int vowel2 = b.getVowels();
+
+            return vowel1 - vowel2;
+
         } else {
-            return -10;
+            return 0;
         }
     }
 }
