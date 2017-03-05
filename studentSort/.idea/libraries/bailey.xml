@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="bailey">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/bailey.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

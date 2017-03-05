@@ -21,7 +21,7 @@ public class ComparatorMaster implements Comparator<Student>{
     If a>b: return 1
     */
     public int compare(Student a, Student b){
-
+        comparison.toUpperCase();
         // Alphabetical comparison by name
         if (comparison.equals("A")){
             String name1 = a.getName();
@@ -43,7 +43,14 @@ public class ComparatorMaster implements Comparator<Student>{
 
             return vowel1 - vowel2;
 
+        }else if (comparison.equals("D")){
+            String address1 = a.getAddress();
+            String address2 = b.getAddress();
+
+            return address1.compareTo(address2);
         }
+
+
     return 0;
     }
 }

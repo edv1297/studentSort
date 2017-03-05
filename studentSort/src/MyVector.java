@@ -80,6 +80,7 @@ public class MyVector<E> extends Vector<E> {
 
     // Method to give answers to questions on lab handout: answers to questions A, B, C, and D
     public static void giveAnswer(String question){
+
         //Since we will be sorting through a vector of association we will not be using the same student
         //object therefore we will have to create a new comparator and swap method.
         if(question.equalsIgnoreCase("D")){
@@ -89,7 +90,6 @@ public class MyVector<E> extends Vector<E> {
 
             for (int j= 0; j>0; j++) {
                 boolean swapped = true;
-
 
                 for (int i = 0; i < addressList.size(); i++) {
                     a = addressList.get(i - 1).getValue();
@@ -106,6 +106,17 @@ public class MyVector<E> extends Vector<E> {
                 if (!swapped) {
                     break;
                 }
+            }
+            //at this point the vector of associations should be populated and sorted.
+            int studentAmt = addressList.getLast().getValue();
+            String searchAddress = addressList.getLast().getKey();
+
+            //sort students by address to make faster.
+            phoneBook.sort(question);
+            {
+
+
+
 
             }
         }
@@ -164,22 +175,28 @@ public class MyVector<E> extends Vector<E> {
 
     public static void populateVecAssociations (Vector<Student> studentList){
         String address;
+
         for (int i = 0; i<studentList.size();i++){
-            address = studentList.get(i).getAddress();
+            //substring of size 5 in order to get the name of the building because no one lives in the same
+            //address, rather the same building.
+
+            address = studentList.get(i).getAddress().substring(0,5);
             boolean keyExists = false;
 
-            for(int j=0;j<addressList.size(); j++) {
-                Association<String, Integer> value = addressList.get(j);
-                if (value.getKey().equals(address)) {
-                    keyExists = true;
-                    value.setValue(value.getValue() + 1);
-                    break;
-                }
-            }
-            if (!keyExists) {
-                Association<String, Integer> newEntry = new Association<String, Integer>(address, 1);
-                addressList.add(newEntry);
+            if(!address.equals("UNKNO")){
+                for(int j=0;j<addressList.size(); j++) {
+                    Association<String, Integer> value = addressList.get(j);
 
+                    if (value.getKey().equals(address)) {
+                        keyExists = true;
+                        value.setValue(value.getValue() + 1);
+                        break;
+                    }
+                }
+                if (!keyExists && !address.equals("UNKNO")) {
+                    Association<String, Integer> newEntry = new Association<String, Integer>(address, 1);
+                    addressList.add(newEntry);
+                }
             }
         }
     }
@@ -191,5 +208,24 @@ public class MyVector<E> extends Vector<E> {
             Student s = phoneBook.get(i);
             System.out.println(s);
         }
+    }
+
+    public boolean binarySearch(Vector<Student> s, String search){
+        int low= 0;
+        int high= s.size()-1;
+        String studentAddress;
+
+        while(high>=low){
+            int mid = (low+high)/2;
+            studentAddress= s.get(mid).getAddress().substring(0,5);
+            if(studentAddress.equals(search)){
+                return true;
+            }
+            else if(studentAddress.compareTo(search)<0){
+                high = mid-1;
+            } else{
+                high= mid + 1;
+            }
+        }return false;
     }
 }
