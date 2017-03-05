@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="MyVector">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/MyVector.java" />
+      <root url="file://$PROJECT_DIR$/SUBoxComparator.java" />
+      <root url="file://$PROJECT_DIR$/NameComparator.java" />
+      <root url="file://$PROJECT_DIR$/Student.java" />
+      <root url="file://$PROJECT_DIR$/VowelCount.java" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
