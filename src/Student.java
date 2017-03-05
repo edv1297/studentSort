@@ -50,7 +50,7 @@ public class Student{
 
         int count = 0;
 
-        for (int i = 0; i < vowels.length-1; i++){
+        for (int i = 0; i < vowels.length; i++){
             for (int j = 0; j < lowercaseName.length(); j++){
                 if (lowercaseName.charAt(j) == vowels[i]){
                     count++;
@@ -70,8 +70,8 @@ public class Student{
         //return "SU Box: " + this.getSuBox();
 
         // VOWEL TEST
-        //return "Name: " + this.getName() + vowelCount;
-        return "" + vowelCount;
+        return "Name: " + this.getName() + vowelCount;
+        //return "" + vowelCount;
 
         // + "\nAddress: " + this.getAddress() + "\nSchool phone: " + this.getSchoolPhone() +
 
