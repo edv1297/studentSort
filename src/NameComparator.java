@@ -3,7 +3,7 @@
  */
 
 import java.util.Comparator;
-//Pre: Given a vector of student objects grab two objects, get their names
+//Pre: Given a vector of student objects: grab two objects, get their names
 //Post: After comparing both names, place the lower one first.
 //
 public class NameComparator implements Comparator <Student>{

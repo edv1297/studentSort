@@ -52,7 +52,7 @@ public class MyVector<E> extends Vector<E> {
 
         }
         // TEST CODE
-        phoneBook.sortByNames(phoneBook);
+        phoneBook.sortBySUBox(phoneBook);
 
     }
 
@@ -93,7 +93,7 @@ public class MyVector<E> extends Vector<E> {
         for(int i= students.size()-1; i>0; i++){
             boolean swapped = false;
 
-        for (int j = 1; j<students.size()-1; j++){
+        for (int j = 1; j<students.size(); j++){
             s1 = students.get(j-1);
             s2 = students.get(j);
             int suBoxResult = compareSU.compare(s1,s2);
