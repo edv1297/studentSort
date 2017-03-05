@@ -53,14 +53,17 @@ public class MyVector<E> extends Vector<E> {
             Student student = new Student(name, address, schoolPhone, suNum, homePhone);
             phoneBook.add(student);
 
-
-            // TEST CODE
-            System.out.println(student);
         }
         // TEST CODE
-        // Enter String "name" for name comparisons, String "SU" for SU comparisons
-        //phoneBook.sort(phoneBook, "name");
-        phoneBook.sort("name");
+        // Enter String "A" for name, "B" for SU
+
+
+        phoneBook.printSortedList();
+        System.out.println("\n\nSorted\n\n");
+
+
+        phoneBook.printSortedList();
+        phoneBook.giveAnswer("B");
 
     }
 
@@ -79,20 +82,19 @@ public class MyVector<E> extends Vector<E> {
         ComparatorMaster comparator = new ComparatorMaster(sortType);
 
         // Initalize the swap condition to be false
-        for (int j = phoneBook.size()-1; j>0; j++){
+        for (int j = phoneBook.size(); j>0; j--){
             boolean swapped = false;
-            // TEST CODE
-            System.out.println(j);
 
-            //
+            // Starting from i=1, we compare student at i to the student at i-1.
             for (int i = 1; i < phoneBook.size(); i++){
                 student1 = phoneBook.get(i-1);
                 student2 = phoneBook.get(i);
                 int result = comparator.compare(student1,student2);
 
+                // Push the greater values towards the end of the vector
                 if(result > 0){
                     swap(i-1, i);
-                    swapped=true;
+                    swapped = true;
                 }
             }
             if(!swapped)
@@ -105,12 +107,27 @@ public class MyVector<E> extends Vector<E> {
         Student temp = phoneBook.get(i);
         phoneBook.set(i, phoneBook.elementAt(j));
         phoneBook.set(j,temp);
-
-        // TEST CODE
-        System.out.println("\nSwapped " + phoneBook.get(i) + " " + phoneBook.get(j));
     }
 
-    //public static void printSortedList
+    // Test method to print out sorted list of students from MyVector.
+    public static void printSortedList(){
+        for (int i = 0; i < phoneBook.size(); i++){
+            Student s = phoneBook.get(i);
+            System.out.println(s);
+        }
+    }
+
+    // Method to give answers to questions on lab handout: answers to questions A, B, C, and D
+    public static void giveAnswer(String question){
+
+        phoneBook.sort(question);
+        Student first = phoneBook.firstElement();
+        Student last = phoneBook.lastElement();
+        System.out.print("first " + first + "\n");
+        System.out.print("last " + last + "\n");
 
 
+        // Print the names of the first and last person in alphabetical order
+
+    }
 }

@@ -45,11 +45,9 @@ public class Student{
     }
     public String toString(){
 
-        // NAME TEST
-        return "Student name: " + this.getName();
-
-        // SU TEST
-        //return "\nSU Box: " + this.getSuBox();
+        // NAME AND SU TEST
+        //return "Name: " + this.getName() + "\nSU Box: " +
+        return "" + this.getSuBox();
 
         // + "\nAddress: " + this.getAddress() + "\nSchool phone: " + this.getSchoolPhone() +
 
