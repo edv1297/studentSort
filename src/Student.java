@@ -45,9 +45,12 @@ public class Student{
     }
     public String toString(){
 
-        return "Student name: " + this.getName() + "\nAddress: " + this.getAddress()
-                + "\nSchool phone: " + this.getSchoolPhone() + "\nSU Box: " +
-                this.getSuBox()+ "\nHome phone: " + this.getHomePhone()+ ". \n";
+        return this.getName();
+
+        // "Student name: " +
+
+         // + "\nAddress: " + this.getAddress() + "\nSchool phone: " + this.getSchoolPhone() + "\nSU Box: " +
+            //    this.getSuBox()+ "\nHome phone: " + this.getHomePhone()+ ". \n";
 
 
 

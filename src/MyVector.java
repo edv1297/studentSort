@@ -44,12 +44,16 @@ public class MyVector<E> extends Vector<E> {
 
             Student student = new Student(name, address, schoolPhone, suNum, homePhone);
             phoneBook.add(student);
+
+
+            // TEST CODE
             System.out.println(student);
 
-            // Test code
-            //phoneBook.sortByNames(phoneBook);
 
         }
+        // TEST CODE
+        phoneBook.sortByNames(phoneBook);
+
     }
 
     public MyVector(){
@@ -66,11 +70,12 @@ public class MyVector<E> extends Vector<E> {
         for (int j = students.size()-1; j>0; j++){
             boolean swapped = false;
 
-            for (int i =1; i<students.size()-1;i++ ){
+            for (int i = 1; i < students.size(); i++){
                 student1 = students.get(i-1);
                 student2 = students.get(i);
                 int result = compareNames.compare(student1,student2);
-                if(result>0){
+
+                if(result >0){
                     swap(students, i-1,i);
                     swapped=true;
                 }
@@ -85,10 +90,10 @@ public class MyVector<E> extends Vector<E> {
         Student s1;
         Student s2;
         SUBoxComparator compareSU= new SUBoxComparator();
-        for(int i=students.size()-1; i>0;i++){
+        for(int i= students.size()-1; i>0; i++){
             boolean swapped = false;
 
-        for (int j = 1; j<students.size()-1;j++){
+        for (int j = 1; j<students.size()-1; j++){
             s1 = students.get(j-1);
             s2 = students.get(j);
             int suBoxResult = compareSU.compare(s1,s2);
@@ -107,6 +112,9 @@ public class MyVector<E> extends Vector<E> {
         Student temp = student.get(i);
         student.set(i,student.elementAt(j));
         student.set(j,temp);
+
+        // TEST CODE
+        System.out.println("\nSwapped " + student.get(i) + student.get(j));
     }
 
 
