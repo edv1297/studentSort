@@ -70,12 +70,9 @@ public class Student{
         //return "SU Box: " + this.getSuBox();
 
         // VOWEL TEST
-        return "Name: " + this.getName() + vowelCount;
-        //return "" + vowelCount;
+        return "Name: " + this.getName() + " " + vowelCount;
 
         // + "\nAddress: " + this.getAddress() + "\nSchool phone: " + this.getSchoolPhone() +
-
-
-         //+ "\nHome phone: " + this.getHomePhone()+ ". \n";
+        //+ "\nHome phone: " + this.getHomePhone()+ ". \n";
     }
 }
