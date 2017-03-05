@@ -45,10 +45,15 @@ public class Student{
     }
     public String toString(){
 
-        //return this.getName() + "Student name: " +
+        // NAME TEST
+        return "Student name: " + this.getName();
+
+        // SU TEST
+        //return "\nSU Box: " + this.getSuBox();
+
         // + "\nAddress: " + this.getAddress() + "\nSchool phone: " + this.getSchoolPhone() +
-         return "\nSU Box: " + this.getSuBox();
-         
+
+
          //+ "\nHome phone: " + this.getHomePhone()+ ". \n";
 
 

@@ -2,7 +2,15 @@ import java.util.Comparator;
 import structure5.*;
 import java.util.Scanner;
 
+/*
+
+MyVector: an extension of the Vector class that will scan an input text,
+gather information about each individual, create objects of class Student,
+and add them to the MyVector of Students.
+
+*/
 public class MyVector<E> extends Vector<E> {
+
     protected static MyVector <Student> phoneBook;
 
     public static void main(String args[]){
@@ -52,7 +60,8 @@ public class MyVector<E> extends Vector<E> {
 
         }
         // TEST CODE
-        phoneBook.sortBySUBox(phoneBook);
+        // Enter String "name" for name comparisons, String "SU" for SU comparisons
+        phoneBook.sort(phoneBook, "name");
 
     }
 
@@ -61,11 +70,11 @@ public class MyVector<E> extends Vector<E> {
 
     }
 
-    //implementing bubble sort for names
-    public void sortByNames(MyVector<Student> students){
+    // Method to compare students based on some sort type and swap their positions in the Vector as necessary
+    public void sort(MyVector<Student> students, String sortType){
         Student student1;
         Student student2;
-        NameComparator compareNames = new NameComparator();
+        ComparatorMaster comparator = new ComparatorMaster(sortType);
 
         for (int j = students.size()-1; j>0; j++){
             boolean swapped = false;
@@ -73,7 +82,7 @@ public class MyVector<E> extends Vector<E> {
             for (int i = 1; i < students.size(); i++){
                 student1 = students.get(i-1);
                 student2 = students.get(i);
-                int result = compareNames.compare(student1,student2);
+                int result = comparator.compare(student1,student2);
 
                 if(result >0){
                     swap(students, i-1,i);
@@ -83,31 +92,9 @@ public class MyVector<E> extends Vector<E> {
             if(!swapped)
                 break;
         }
-
     }
 
-    public void sortBySUBox(MyVector<Student> students){
-        Student s1;
-        Student s2;
-        SUBoxComparator compareSU= new SUBoxComparator();
-        for(int i= students.size()-1; i>0; i++){
-            boolean swapped = false;
-
-        for (int j = 1; j<students.size(); j++){
-            s1 = students.get(j-1);
-            s2 = students.get(j);
-            int suBoxResult = compareSU.compare(s1,s2);
-
-            if(suBoxResult>0){
-                swap(students,j-1,j);
-                swapped = true;
-            }
-        }
-            if(!swapped)
-                break;
-        }
-
-    }
+    // Helper method to sort students after they've been compared by some criteria
     public static void swap(MyVector<Student> student, int i, int j){
         Student temp = student.get(i);
         student.set(i,student.elementAt(j));
