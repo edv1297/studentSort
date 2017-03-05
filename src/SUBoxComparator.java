@@ -6,7 +6,7 @@ import java.util.Comparator;
     public class SUBoxComparator implements Comparator<Student> {
 
 
-        public SUBoxComparator(Student a, Student b){
+        public SUBoxComparator(){
 
         }
 

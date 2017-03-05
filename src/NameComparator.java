@@ -8,9 +8,8 @@ import java.util.Comparator;
 //
 public class NameComparator implements Comparator <Student>{
 
-    public NameComparator (Student s1, Student s2){
+    public NameComparator (){
 
-        compare(s1, s2);
     }
     //if a<b return -1
     //if a=b return 0
