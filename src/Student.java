@@ -14,6 +14,8 @@ public class Student{
     protected long aPhone;
     protected int aSuBox;
     protected long aHomePhone;
+
+    // Test variable
     private int vowelCount;
 
     public Student(String name, String address, long schoolPhone, int suBox, long homePhone){
@@ -57,8 +59,9 @@ public class Student{
                 }
             }
         }
-            vowelCount = count;
-            return count;
+        // Test variable
+        vowelCount = count;
+        return count;
     }
 
     public String toString(){
