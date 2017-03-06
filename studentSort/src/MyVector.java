@@ -16,6 +16,7 @@ public class MyVector<E> extends Vector<E> {
 
     protected static MyVector <Student> phoneBook;
     protected static Vector<Association<String, Integer>> addressList;
+    protected static Vector<Association<String, Integer>> phoneList;
 
     public static void main(String args[]){
 
@@ -88,7 +89,7 @@ public class MyVector<E> extends Vector<E> {
             int a;
             int b;
 
-            for (int j= 0; j>0; j++) {
+            for (int j= 0; j>phoneBook.size(); j++) {
                 boolean swapped = true;
 
                 for (int i = 0; i < addressList.size(); i++) {
@@ -96,17 +97,16 @@ public class MyVector<E> extends Vector<E> {
                     b = addressList.get(i).getValue();
 
                     int result = a - b;
-
                     if (result > 0) {
-                        swapVecAssociations(i - 1, i);
+                        swapVecAssociations(addressList,i - 1, i);
                         swapped = true;
                     }
                 }
-
                 if (!swapped) {
                     break;
                 }
             }
+
             //at this point the vector of associations should be populated and sorted.
             int studentAmt = addressList.getLast().getValue();
             String searchAddress = addressList.getLast().getKey();
@@ -121,6 +121,32 @@ public class MyVector<E> extends Vector<E> {
                 System.out.println(s);
             }
 
+        }
+        if(question.equalsIgnoreCase("E")){
+            populatePhoneAssociations(phoneBook);
+            int a,b;
+
+            for(int i = 0; i<phoneBook.size(); i++){
+                boolean swapped = true;
+                for(int j = 1; j<phoneList.size();j++){
+                    a = phoneList.get(j-1).getValue();
+                    b = phoneList.get(j).getValue();
+
+                    int result = a-b;
+                    if(result>0){
+                        swapVecAssociations(phoneList,j-1,j);
+                    }
+                }
+            if(!swapped){
+                break;
+                }
+            }
+            int start = phoneList.size();
+
+            for(int i= start-1; i<start-10; i--){
+                String areaCode = phoneList.get(i).getKey();
+                System.out.println(areaCode);
+            }
         }
 
         else {
@@ -170,10 +196,10 @@ public class MyVector<E> extends Vector<E> {
         phoneBook.set(j,temp);
     }
 
-    public static void swapVecAssociations (int i, int j){
-        Association temp = addressList.get(i);
-        addressList.set(i,addressList.elementAt(j));
-        addressList.set(j,temp);
+    public static void swapVecAssociations (Vector<Association<String, Integer>> v,int i, int j){
+        Association temp = v.get(i);
+        v.set(i,v.elementAt(j));
+        v.set(j,temp);
     }
 
     public static void populateVecAssociations (Vector<Student> studentList){
@@ -230,5 +256,33 @@ public class MyVector<E> extends Vector<E> {
                 high= mid + 1;
             }
         }return null;
+    }
+    public static void populatePhoneAssociations(Vector<Student> s ){
+
+        long areaCode;
+
+        for(int i = 0; i<s.size();i++){
+            boolean flag = false;
+            areaCode = s.get(i).getHomePhone();
+            String strLong = Long.toString(areaCode);
+
+            if(strLong.length()>2){
+            strLong.substring(0,3);
+            for(int j = 0; j <s.size();j++){
+                Association<String, Integer> value = phoneList.get(j);
+                if(value.getKey().equals(strLong)){
+                    flag = true;
+                    value.setValue(value.getValue()+1);
+                    break;
+                }
+            }
+                if(!flag && strLong.length()>2){
+                    Association<String, Integer> newEntry =
+                            new Association<String, Integer>(strLong,1);
+                    phoneList.add(newEntry);
+                }
+            }
+
+        }
     }
 }

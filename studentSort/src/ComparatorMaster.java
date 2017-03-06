@@ -50,7 +50,6 @@ public class ComparatorMaster implements Comparator<Student>{
             return address1.compareTo(address2);
         }
 
-
     return 0;
     }
 }
