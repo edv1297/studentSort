@@ -12,9 +12,11 @@ public class ComparatorMaster implements Comparator<Student>{
     }
 
     /*
-    If a<b: return -1
-    If a=b: return 0
-    If a>b: return 1 
+    Method that compares two Students by certain criteria:
+    A = name comparison
+    B = SU box num comparison
+    C = vowel count comparison
+    D = address frequency comparison
     */
     public int compare(Student a, Student b){
 

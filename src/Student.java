@@ -64,6 +64,7 @@ public class Student{
         return count;
     }
 
+    // The String output when we print a Student 
     public String toString(){
 
         // NAME TEST
