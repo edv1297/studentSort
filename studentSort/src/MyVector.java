@@ -113,13 +113,16 @@ public class MyVector<E> extends Vector<E> {
 
             //sort students by address to make faster.
             phoneBook.sort(question);
-            {
+            System.out.println("Most popular Building on campus\n" +
+                                "-------------------------------\n");
 
-
-
-
+            for(int i =0; i<studentAmt; i++){
+                Student s = phoneBook.binarySearch(phoneBook, searchAddress);
+                System.out.println(s);
             }
+
         }
+
         else {
             phoneBook.sort(question);
             phoneBook.printSortedList();
@@ -210,7 +213,7 @@ public class MyVector<E> extends Vector<E> {
         }
     }
 
-    public boolean binarySearch(Vector<Student> s, String search){
+    public Student binarySearch(Vector<Student> s, String search){
         int low= 0;
         int high= s.size()-1;
         String studentAddress;
@@ -219,13 +222,13 @@ public class MyVector<E> extends Vector<E> {
             int mid = (low+high)/2;
             studentAddress= s.get(mid).getAddress().substring(0,5);
             if(studentAddress.equals(search)){
-                return true;
+                return s.get(mid);
             }
             else if(studentAddress.compareTo(search)<0){
                 high = mid-1;
             } else{
                 high= mid + 1;
             }
-        }return false;
+        }return null;
     }
 }
